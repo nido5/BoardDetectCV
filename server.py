@@ -68,7 +68,7 @@ async def broadcast(data):
             print("Error sending image")
 
 
-async def echo(websocket):
+async def echo(websocket, *args):
 
     connected_clients.append(websocket)
 
