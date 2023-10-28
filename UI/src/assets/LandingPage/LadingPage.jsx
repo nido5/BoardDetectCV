@@ -36,7 +36,7 @@ export default function LandingPage() {
         </div>
         <div class="">
           <img
-            src={`data:image/jpeg;base64,${imgStream()}`}
+            src={`data:image/jpeg;base64,${imgStream()[0]}`}
             alt="Captured Image"
             class="w-[600px]"
           ></img>
@@ -49,7 +49,7 @@ export default function LandingPage() {
             Recent Images
           </p>
           <img
-            src={`data:image/jpeg;base64,${recentImage()}`}
+            src={`data:image/jpeg;base64,${imgStream()[1}`}
             alt="Captured Image"
             class="w-[600px]"
           ></img>

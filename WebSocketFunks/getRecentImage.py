@@ -14,15 +14,21 @@ def getRecentImage():
         if jpg_files:
             # Get the path of the most recent .jpg file
             most_recent_jpg = jpg_files[0]
+            second_most_recent_jpg = jpg_files[1]
 
             # Read the most recent .jpg file
             with open(most_recent_jpg, 'rb') as file:
                 jpg_data = file.read()
 
+            with open(second_most_recent_jpg, 'rb') as file:
+                jpg_data_2 = file.read()
+            
+
             # Convert the .jpg data to base64
             jpg_base64 = base64.b64encode(jpg_data).decode('utf-8')
+            jpg_base64_2 = base64.b64encode(jpg_data_2).decode('utf-8')
 
-            return jpg_base64
+            return [jpg_base64,jpg_base64_2]
         else:
             return None  # No .jpg files found in the folder
     except Exception as e:

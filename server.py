@@ -16,7 +16,7 @@ recentImage = ""
 
 async def stateUpdate():
     while True:
-        await broadcast({"action": "state", "data": {"recentImage": getRecentImage()}})
+        await broadcast({"action": "state", "data": {"recentImages": getRecentImage()}})
         await asyncio.sleep(1)  # Sleep for 1 second
 
 
