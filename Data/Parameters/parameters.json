@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Blur Matrix Karnel",
+        "value": "1",
+        "min": 0,
+        "max": 255,
+        "description": "\"blur karnel\"",
+        "newValue": null
+    },
+    {
+        "name": "Threshold",
+        "value": "40",
+        "min": 0,
+        "max": 255,
+        "description": "\"blur karnel\"",
+        "newValue": null
+    },
+    {
+        "name": "Points",
+        "value": "1",
+        "min": 0,
+        "max": 255,
+        "description": "\"blur karnel\"",
+        "newValue": null
+    },
+    {
+        "name": "Blur",
+        "value": "99",
+        "min": 0,
+        "max": 255,
+        "description": "\"blur karnel\"",
+        "newValue": null
+    }
+]
