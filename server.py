@@ -41,7 +41,7 @@ async def capture_and_broadcast():
                 global counter
                 connected_clients = [client for client in connected_clients if client.open]
 
-                clientCount = 0
+                clientCount = 2
 
                 jsonEncode = json.dumps({"action": "image", "data": base64_image})
 
