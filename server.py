@@ -46,9 +46,13 @@ async def capture_and_broadcast():
 
                 clientCount = 2
 
+                
+
                 jsonEncode = json.dumps({"action": "image", "data": base64_image})
 
-                print("message length:", utf8len(jsonEncode))
+                compressed_value = jsonEncode.encode("zlib")
+
+                print("message length:", utf8len(jsonEncode), "new: ", utf8len(compressed_value))
 
                 for client in connected_clients:
                     try:
