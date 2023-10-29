@@ -51,7 +51,7 @@ async def capture_and_broadcast():
 
                 jsonEncode = json.dumps({"action": "image", "data": base64_image})
 
-                compressed_value = jsonEncode.encode("zlib")
+                compressed_value = jsonEncode.encode('utf-8').encode('zlib_codec')
 
                 print("message length:", utf8len(jsonEncode), "new: ", utf8len(compressed_value))
 
