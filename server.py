@@ -6,6 +6,7 @@ import websockets
 import numpy as np
 import base64
 import zlib
+import time
 
 from WebSocketFunks.sendParameters import getParametersFromFile
 from WebSocketFunks.updateParameters import updateParameters
@@ -14,6 +15,7 @@ from WebSocketFunks.getRecentImage import getRecentImage
 
 connected_clients = []
 recentImage = ""
+currentTime = time.time()
 
 def utf8len(s):
     return len(s.encode('utf-8'))
@@ -47,6 +49,7 @@ async def capture_and_broadcast():
 
                 clientCount = 2
 
+
                 
 
                 jsonEncode = json.dumps({"action": "image", "data": base64_image})
@@ -55,6 +58,15 @@ async def capture_and_broadcast():
 
                 print("Original JSON length:", len(jsonEncode))
                 print("Compressed data length:", len(compressed_value))
+
+
+                global currentTime
+                timestamp = time.time()  # Current Unix timestamp (float)
+                print(timestamp - currentTime)
+
+                currentTime=timestamp
+
+
 
                 for client in connected_clients:
                     try:

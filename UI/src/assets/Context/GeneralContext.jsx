@@ -12,6 +12,7 @@ export const GlobalContext = createContext();
 
 export function GlobalContextProvider(props) {
   const [imgStream, setimgStream] = createSignal();
+  const [Time, setTime] = createSignal();
   const [recentImage, setRecentImage] = createSignal([]);
   const [websocket, setWebsocket] = createStore({
     enable: false,
@@ -31,6 +32,9 @@ export function GlobalContextProvider(props) {
 
   function readWebsocket(message) {
     const obj = JSON.parse(message);
+    const timestamp = new Date().getTime();
+    console.log(timestamp - Time());
+    setTime(timestamp);
 
     switch (obj.action) {
       case "parameters":
@@ -43,7 +47,6 @@ export function GlobalContextProvider(props) {
         setimgStream(obj.data);
         break;
       case "state":
-        console.log("StateRecieved", obj.data.recentImages);
         setRecentImage(obj.data.recentImages);
         break;
     }
