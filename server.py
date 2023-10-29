@@ -5,6 +5,7 @@ import cv2
 import websockets
 import numpy as np
 import base64
+import zlib
 
 from WebSocketFunks.sendParameters import getParametersFromFile
 from WebSocketFunks.updateParameters import updateParameters
