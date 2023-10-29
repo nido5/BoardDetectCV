@@ -5,7 +5,6 @@ import cv2
 import websockets
 import numpy as np
 import base64
-import gzip
 
 from WebSocketFunks.sendParameters import getParametersFromFile
 from WebSocketFunks.updateParameters import updateParameters
@@ -31,28 +30,29 @@ async def capture_and_broadcast():
                 # Resize the captured frame if needed
                 # frame = cv2.resize(frame, (width, height))
 
-                # Convert the frame to bytes
+                # Convert the frame to bytes and send it to all connected clients
                 image_data = cv2.imencode('.jpg', frame)[1].tobytes()
+                base64_image = base64.b64encode(image_data).decode('utf-8')  # Encode the image data as base64
 
-               
-
-                # Create a JSON object containing the compressed and encoded data
-                json_data = {"action": "image", "data": "base64_compressed_data"}
-
+                global recentImage
+                recentImage = base64_image
 
                 global connected_clients
                 global counter
                 connected_clients = [client for client in connected_clients if client.open]
 
+                clientCount = 2
+
+                jsonEncode = json.dumps({"action": "image", "data": base64_image})
+
                 for client in connected_clients:
                     try:
-                        await client.send(json_data)
+                        await client.send(jsonEncode)
                     except:
                         print("Error sending image")
-        except:
-            print("camera reading error")
+        except: print("camera reading error")
 
-        await asyncio.sleep(0.2)  # Capture an image every 200ms
+        await asyncio.sleep(0.2)  # Capture an image every 100ms
 
 
 async def broadcast(data):
