@@ -56,8 +56,6 @@ async def capture_and_broadcast():
 
                 compressed_value = zlib.compress(jsonEncode.encode('utf-8'))
 
-                print("Original JSON length:", len(jsonEncode))
-                print("Compressed data length:", len(compressed_value))
 
 
                 global currentTime
