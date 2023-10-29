@@ -30,10 +30,7 @@ export function GlobalContextProvider(props) {
   }
 
   function readWebsocket(message) {
-    const obj = {}; //JSON.parse(message);
-
-    newString = pako.ungzip(message, { to: "string" });
-    console.log("newString", newString);
+    const obj = JSON.parse(message);
 
     switch (obj.action) {
       case "parameters":

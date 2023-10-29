@@ -14,6 +14,9 @@ from WebSocketFunks.getRecentImage import getRecentImage
 connected_clients = []
 recentImage = ""
 
+def utf8len(s):
+    return len(s.encode('utf-8'))
+
 async def stateUpdate():
     while True:
         await broadcast({"action": "state", "data": {"recentImages": getRecentImage()}})
@@ -44,6 +47,8 @@ async def capture_and_broadcast():
                 clientCount = 2
 
                 jsonEncode = json.dumps({"action": "image", "data": base64_image})
+
+                print("message length:", utf8len(jsonEncode))
 
                 for client in connected_clients:
                     try:
