@@ -34,12 +34,14 @@ async def capture_and_broadcast():
                 # Convert the frame to bytes
                 image_data = cv2.imencode('.jpg', frame)[1].tobytes()
 
-                # Gzip the JSON object
-                json_data = {"action": "image", "data": base64.b64encode(image_data).decode('utf-8')}
-                compressed_json = gzip.compress(json.dumps(json_data).encode('utf-8'))
+                compressed_data = gzip.compress(image_data)
 
-                global recentImage
-                recentImage = base64.b64encode(compressed_json).decode('utf-8')
+                # Encode the compressed data as base64
+                base64_compressed_data = base64.b64encode(compressed_data).decode('utf-8')
+
+                # Create a JSON object containing the compressed and encoded data
+                json_data = {"action": "image", "data": base64_compressed_data}
+
 
                 global connected_clients
                 global counter
@@ -47,7 +49,7 @@ async def capture_and_broadcast():
 
                 for client in connected_clients:
                     try:
-                        await client.send(recentImage)
+                        await client.send(json_data)
                     except:
                         print("Error sending image")
         except:

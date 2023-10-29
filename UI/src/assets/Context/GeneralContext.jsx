@@ -6,6 +6,7 @@ import {
 } from "solid-js";
 import { createStore } from "solid-js/store";
 import { connect2WS } from "../../connection";
+import pako from "pako";
 
 export const GlobalContext = createContext();
 
@@ -29,7 +30,10 @@ export function GlobalContextProvider(props) {
   }
 
   function readWebsocket(message) {
-    const obj = JSON.parse(message);
+    const obj = {}; //JSON.parse(message);
+
+    newString = pako.ungzip(message, { to: "string" });
+    console.log("newString", newString);
 
     switch (obj.action) {
       case "parameters":
