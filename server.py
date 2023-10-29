@@ -60,7 +60,7 @@ async def capture_and_broadcast():
                         await client.send(jsonEncode)
                     except:
                         print("Error sending image")
-        except: print("camera reading error")
+        except ValueError: print("camera reading error", ValueError)
 
         await asyncio.sleep(0.2)  # Capture an image every 100ms
 
