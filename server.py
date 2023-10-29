@@ -34,10 +34,7 @@ async def capture_and_broadcast():
                 # Convert the frame to bytes
                 image_data = cv2.imencode('.jpg', frame)[1].tobytes()
 
-                compressed_data = gzip.compress(image_data)
-
-                # Encode the compressed data as base64
-                base64_compressed_data = base64.b64encode(compressed_data).decode('utf-8')
+               
 
                 # Create a JSON object containing the compressed and encoded data
                 json_data = {"action": "image", "data": "base64_compressed_data"}
