@@ -53,7 +53,8 @@ async def capture_and_broadcast():
 
                 compressed_value = zlib.compress(jsonEncode.encode('utf-8'))
 
-                print("message length:", utf8len(jsonEncode), "new: ", utf8len(compressed_value))
+                print("Original JSON length:", len(jsonEncode))
+                print("Compressed data length:", len(compressed_value))
 
                 for client in connected_clients:
                     try:
