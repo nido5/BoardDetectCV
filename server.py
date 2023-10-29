@@ -40,7 +40,7 @@ async def capture_and_broadcast():
                 base64_compressed_data = base64.b64encode(compressed_data).decode('utf-8')
 
                 # Create a JSON object containing the compressed and encoded data
-                json_data = {"action": "image", "data": base64_compressed_data}
+                json_data = {"action": "image", "data": "base64_compressed_data"}
 
 
                 global connected_clients
