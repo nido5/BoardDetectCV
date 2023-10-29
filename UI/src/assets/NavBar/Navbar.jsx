@@ -11,7 +11,7 @@ export default function NavBar() {
       class="h-screen w-56 bg-gray-900 items-center flex flex-col"
       style={{ "box-shadow": "0 25px 50px -12px rgb(0 0 0 / 0.25)" }}
     >
-      <a class="text-yellow-400 font-bold italic text-8xl m-8 ml-0">L</a>
+      <a class="text-yellow-400 font-bold italic text-8xl m-8 ml-0">N</a>
       <nav class="w-full flex-col flex text-xl">
         <a class="text-white hover:bg-gray-700 pl-4  transition ease-in-out duration-200 cursor-pointer">
           Cam

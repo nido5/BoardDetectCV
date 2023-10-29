@@ -11,7 +11,7 @@ export const GlobalContext = createContext();
 
 export function GlobalContextProvider(props) {
   const [imgStream, setimgStream] = createSignal();
-  const [recentImage, setRecentImage] = createSignal();
+  const [recentImage, setRecentImage] = createSignal([]);
   const [websocket, setWebsocket] = createStore({
     enable: false,
     connected: false,
@@ -42,8 +42,8 @@ export function GlobalContextProvider(props) {
         setimgStream(obj.data);
         break;
       case "state":
-        console.log("StateRecieved");
-        setRecentImage(obj.data.recentImage);
+        console.log("StateRecieved", obj.data.recentImages);
+        setRecentImage(obj.data.recentImages);
         break;
     }
   }

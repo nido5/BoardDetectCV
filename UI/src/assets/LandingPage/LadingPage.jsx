@@ -36,7 +36,7 @@ export default function LandingPage() {
         </div>
         <div class="">
           <img
-            src={`data:image/jpeg;base64,${imgStream()[0]}`}
+            src={`data:image/jpeg;base64,${imgStream()}`}
             alt="Captured Image"
             class="w-[600px]"
           ></img>
@@ -44,22 +44,19 @@ export default function LandingPage() {
       </div>
 
       <div class="flex flex-col justify-start w-1/2 items-center bg-amber-100">
-        <div class="flex flex-col  mb-6 mt-8 w-full ">
+        <div class="flex flex-col  mb-6 mt-8 w-full justify-center items-center">
           <p class="text-3xl flex justify-center items-center ">
             Recent Images
           </p>
           <img
-            src={`data:image/jpeg;base64,${imgStream()[1}`}
+            src={`data:image/jpeg;base64,${recentImage()[0]}`}
             alt="Captured Image"
             class="w-[600px]"
           ></img>
         </div>
-        <div class="flex flex-col  mb-6 mt-8 w-full ">
-          <p class="text-3xl flex justify-center items-center ">
-            Recent Images
-          </p>
+        <div class="flex flex-col  mb-6 mt-8 w-full justify-center items-center ">
           <img
-            src={`data:image/jpeg;base64,${recentImage()}`}
+            src={`data:image/jpeg;base64,${recentImage()[1]}`}
             alt="Captured Image"
             class="w-[600px]"
           ></img>
